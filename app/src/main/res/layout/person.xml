@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <android.support.v4.widget.NestedScrollView
+        android:id="@+id/nestedScrollView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:fillViewport="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:id="@+id/avatar"
+                    android:layout_width="match_parent"
+                    android:layout_height="269dp"
+                    android:scaleType="fitXY" />
+
+                <TextView
+                    android:id="@+id/FIO"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginStart="14dp"
+                    android:layout_marginTop="191dp"
+                    android:text="FIO"
+                    android:textColor="@color/vk_white"
+                    android:textSize="15dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/online"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignStart="@+id/FIO"
+                    android:layout_below="@+id/FIO"
+                    android:text=""
+                    android:textColor="@color/vk_grey_color" />
+
+                <Button
+                    android:id="@+id/edit"
+
+                    android:layout_width="350dp"
+                    android:layout_height="40dp"
+                    android:layout_below="@+id/avatar"
+                    android:layout_centerHorizontal="true"
+                    android:text="Редактировать" />
+
+                <Button
+                    android:id="@+id/status"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_alignParentStart="true"
+                    android:layout_below="@+id/edit"
+                    android:background="@color/vk_clear"
+                    android:paddingRight="150dp"
+                    android:text="Изменить статус"
+                    android:textColor="@color/vk_light_color"
+                    app:srcCompat="@drawable/vk_share_send_button_background" />
+
+                <Button
+
+                    android:id="@+id/friends"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_below="@+id/status"
+                    android:layout_centerHorizontal="true"
+                    android:background="@color/vk_clear"
+                    android:paddingRight="160dp"
+                    android:text="друзей"
+                    android:textColor="@color/vk_light_color" />
+
+                <Button
+                    android:paddingRight="130dp"
+                    android:id="@+id/subscriber"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_below="@+id/friends"
+                    android:layout_centerHorizontal="true"
+                    android:background="@color/vk_clear"
+                    android:text="подписчика"
+                    android:textColor="@color/vk_light_color" />
+                <TextView
+                    android:id="@+id/city"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_below="@+id/subscriber"
+                    android:layout_centerHorizontal="true"
+                    android:background="@color/vk_clear"
+                    android:paddingBottom="10dp"
+                    android:paddingLeft="50dp"
+                    android:paddingTop="10dp"
+                    android:text="Город"
+                    android:textColor="@color/vk_light_color" />
+
+                <TextView
+                    android:id="@+id/studies"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_below="@+id/city"
+                    android:layout_centerHorizontal="true"
+                    android:background="@color/vk_clear"
+                    android:paddingBottom="10dp"
+                    android:paddingLeft="50dp"
+                    android:paddingTop="10dp"
+                    android:text="Место работы/учёбы"
+                    android:textColor="@color/vk_light_color" />
+
+
+
+            </RelativeLayout>
+
+        </LinearLayout>
+    </android.support.v4.widget.NestedScrollView>
+
+</android.support.constraint.ConstraintLayout>
