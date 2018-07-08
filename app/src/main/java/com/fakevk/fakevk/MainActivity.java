@@ -35,8 +35,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
         Button login=findViewById(R.id.login);
         login.setOnClickListener(this);
-
         }
+
             @Override
             public void onClick(View v) {
                 VKSdk.login(this, VKScope.WALL, VKScope.PHOTOS);

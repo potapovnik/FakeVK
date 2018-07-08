@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:id="@+id/relativeLayout"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
+
+        <LinearLayout
+            android:id="@+id/capabilities"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:orientation="horizontal"
+            android:background="@color/vk_share_blue_color">
+
+            <ImageButton
+
+                android:id="@+id/imageButton2"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                app:srcCompat="?attr/homeAsUpIndicator"
+                android:background="@color/vk_share_blue_color"/>
+
+            <Button
+                android:id="@+id/button11"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="7"
+                android:text="Друзья"
+                android:textColor="@color/vk_white"
+                android:background="@color/vk_share_blue_color"/>
+
+            <ImageButton
+                android:id="@+id/imageButton3"
+                android:layout_width="50dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                app:srcCompat="@drawable/vk_clear_shape"
+                android:background="@color/vk_share_blue_color"/>
+
+            <ImageButton
+                android:id="@+id/imageButton"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                app:srcCompat="@android:drawable/ic_menu_search"
+                android:background="@color/vk_share_blue_color"
+
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/freinds"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:layout_below="@+id/capabilities"
+            android:orientation="horizontal"
+            >
+
+            <Button
+                android:id="@+id/friends"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="Друзей"
+                android:gravity="center"
+                android:textColor="@color/vk_white"
+                android:background="@color/vk_share_top_blue_color"/>
+
+            <Button
+                android:id="@+id/network"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="В СЕТИ"
+                android:textColor="@color/vk_white"
+                android:background="@color/vk_share_blue_color"/>
+        </LinearLayout>
+
+        <ListView
+            android:id="@+id/friendsOnScroll"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/freinds"
+            android:layout_centerHorizontal="true" />
+
+    </RelativeLayout>
+
+</android.support.constraint.ConstraintLayout>

@@ -1,40 +1,29 @@
 package com.fakevk.fakevk;
 
-import android.app.Activity;
 import android.util.Log;
 
-import com.squareup.picasso.Picasso;
+import com.google.gson.Gson;
 import com.vk.sdk.api.VKApi;
 import com.vk.sdk.api.VKApiConst;
 import com.vk.sdk.api.VKError;
 import com.vk.sdk.api.VKParameters;
 import com.vk.sdk.api.VKRequest;
 import com.vk.sdk.api.VKResponse;
+import com.vk.sdk.api.model.VKUsersArray;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
 
 public class VKRequestHelper {
-    public static void  setPersonalPage(final Person person) {
+    public static void  setPersonalPage(final PersonActivity personActivity) {
         VKRequest user = VKApi.users().get(VKParameters.from(VKApiConst.USER_IDS, "vse_vi_mghazi",VKApiConst.FIELDS, "first_name, universities , last_name, online, city, status, photo_max,status, counters"));
 
         user.executeWithListener(new VKRequest.VKRequestListener() {
             @Override
             public void onComplete(VKResponse response) {
-                JSONArray Myresponse = response.json.optJSONArray("response");
-                JSONObject Iuser = Myresponse.optJSONObject(0);
-                JSONObject IuserCounters=Iuser.optJSONObject("counters");
-                JSONObject City=Iuser.optJSONObject("city");
-
-                person.loadedImage(Iuser.optString("photo_max"));
-                person.setFIO(Iuser.optString("first_name")+" "+Iuser.optString("last_name"));
-                person.setOnline(Iuser.optString("online"));
-                person.setStatus(Iuser.optString("status"));
-                person.setFriends(IuserCounters.optString("friends"));
-                person.setSubscriber(IuserCounters.optString("subscriptions"));
-                person.setCity(City.optString("title"));
+                ArrayPerson obj = new Gson().fromJson(response.responseString, ArrayPerson.class);
+                personActivity.setPersonalPage(obj.response.get(0));
                 Log.d("rrrrrrrr", ""+response.json);
-               // person.setStudies((IuserCounters.optJSONObject("education").optString("university_name")));
             }
 
             @Override
@@ -47,5 +36,59 @@ public class VKRequestHelper {
 //I don't really believe in progress
             }
         });
+
+    }
+
+    public static void  setFriendsPage(final FriendsActivity friendsActivity) {
+        VKRequest user = VKApi.users().get(VKParameters.from(VKApiConst.USER_IDS, "vse_vi_mghazi",VKApiConst.FIELDS, "counters"));
+        user.executeWithListener(new VKRequest.VKRequestListener() {
+            @Override
+            public void onComplete(VKResponse response) {
+                JSONArray myResponse=response.json.optJSONArray("response");
+                JSONObject myObjResponse=myResponse.optJSONObject(0);
+                Friends friends=new Gson().fromJson(String.valueOf(myObjResponse),Friends.class);
+               // friendsActivity.setFriendsPage(friends);
+
+                Log.d("rrrrrrrr", ""+friends.counters.followers);
+
+            }
+
+            @Override
+            public void onError(VKError error) {
+//Do error stuff
+            }
+
+            @Override
+            public void attemptFailed(VKRequest request, int attemptNumber, int totalAttempts) {
+//I don't really believe in progress
+            }
+        });
+
+    }
+    public static void  setFriendsOnScroolPage(final FriendsActivity friendsActivity) {
+        VKRequest user = new VKRequest("friends.get", VKParameters.from(VKApiConst.USER_ID,495289337, VKApiConst.FIELDS, "first_name, last_name, photo_100"));
+        user.executeWithListener(new VKRequest.VKRequestListener() {
+            @Override
+            public void onComplete(VKResponse response) {
+                Log.d("aaaaaaaaaaaaa", ""+response.json);
+                JSONArray myResponse=response.json.optJSONArray("response");
+                JSONObject myObjResponse=myResponse.optJSONObject(0);
+                FriendsOnScroll friendsOnScroll=new Gson().fromJson(String.valueOf(myObjResponse),FriendsOnScroll.class);
+
+
+
+            }
+
+            @Override
+            public void onError(VKError error) {
+//Do error stuff
+            }
+
+            @Override
+            public void attemptFailed(VKRequest request, int attemptNumber, int totalAttempts) {
+//I don't really believe in progress
+            }
+        });
+
     }
 }

@@ -12,10 +12,10 @@
         android:fillViewport="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0">
+        app:layout_constraintVertical_bias="0.0">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -90,15 +90,16 @@
                     android:textColor="@color/vk_light_color" />
 
                 <Button
-                    android:paddingRight="130dp"
                     android:id="@+id/subscriber"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
                     android:layout_below="@+id/friends"
                     android:layout_centerHorizontal="true"
                     android:background="@color/vk_clear"
+                    android:paddingRight="130dp"
                     android:text="подписчика"
                     android:textColor="@color/vk_light_color" />
+
                 <TextView
                     android:id="@+id/city"
                     android:layout_width="match_parent"
@@ -124,7 +125,6 @@
                     android:paddingTop="10dp"
                     android:text="Место работы/учёбы"
                     android:textColor="@color/vk_light_color" />
-
 
 
             </RelativeLayout>
