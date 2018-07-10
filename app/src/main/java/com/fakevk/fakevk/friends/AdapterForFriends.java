@@ -1,25 +1,24 @@
-package com.fakevk.fakevk;
+package com.fakevk.fakevk.friends;
 
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.CheckBox;
-import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.fakevk.fakevk.R;
 import com.squareup.picasso.Picasso;
 
-import java.util.ArrayList;
+import java.util.List;
 
-public class AdapterForFriends  extends BaseAdapter {
+public class AdapterForFriends  extends BaseAdapter  {
     Context ctx;
     LayoutInflater lInflater;
-    ArrayList<FriendsOnScroll> objects;
+    List<FriendsOnScroll> objects;
 
-    AdapterForFriends(Context context, ArrayList<FriendsOnScroll> FriendsOnScrolls) {
+    AdapterForFriends(Context context, List<FriendsOnScroll> FriendsOnScrolls) {
         ctx = context;
         objects = FriendsOnScrolls;
         lInflater = (LayoutInflater) ctx
@@ -49,16 +48,17 @@ public class AdapterForFriends  extends BaseAdapter {
         // используем созданные, но не используемые view
         View view = convertView;
         if (view == null) {
-            view = lInflater.inflate(R.layout.friendsonscroll, parent, false);
+            view = lInflater.inflate(R.layout.friends_on_scroll, parent, false);
         }
 
         FriendsOnScroll p = FriendsOnScroll(position);
-        ((TextView) view.findViewById(R.id.FIO)).setText(p.fisrt_name+" "+p.last_name);
+        ((TextView) view.findViewById(R.id.FIO)).setText(p.first_name+" "+p.last_name);
         Picasso.with(ctx)
                 .load(p.photo_50)
                 .into(((ImageView) view.findViewById(R.id.avatarOnScroll)));
 
         return view;
+        
     }
 
     FriendsOnScroll FriendsOnScroll(int position) {

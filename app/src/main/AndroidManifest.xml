@@ -20,14 +20,14 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".PersonActivity">
+        <activity android:name=".person.PersonActivity">
             <intent-filter>
                 <action android:name="android.intent.action.Person" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".FriendsActivity">
+        <activity android:name=".friends.FriendsActivity">
             <intent-filter>
                 <action android:name="android.intent.action.Friends" />
 

@@ -27,7 +27,7 @@
                 android:layout_height="match_parent">
 
                 <ImageView
-                    android:id="@+id/avatar"
+                    android:id="@+id/avatarStranger"
                     android:layout_width="match_parent"
                     android:layout_height="269dp"
                     android:scaleType="fitXY" />
@@ -55,20 +55,33 @@
                     android:text=""
                     android:textColor="@color/vk_grey_color" />
 
-                <Button
-                    android:id="@+id/edit"
-
-                    android:layout_width="390dp"
-                    android:layout_height="40dp"
-                    android:layout_below="@+id/avatar"
-                    android:layout_centerHorizontal="true"
-                    android:text="Редактировать" />
-
                 <LinearLayout
-                    android:id="@+id/statusLinear"
+                    android:id="@+id/massegeFriendsLinearStranger"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
-                    android:layout_below="@+id/edit"
+                    android:layout_below="@+id/avatarStranger"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:id="@+id/button2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Button" />
+
+                    <Button
+                        android:id="@+id/button"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Button" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/statusLinearStranger"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_below="@+id/massegeFriendsLinearStranger"
                     android:orientation="horizontal">
 
                     <ImageView
@@ -76,8 +89,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
-                        android:paddingLeft="15dp"
                         android:background="@color/vk_white"
+                        android:paddingLeft="15dp"
                         app:srcCompat="@drawable/ic_profile_status" />
 
                     <TextView
@@ -86,8 +99,8 @@
                         android:layout_height="match_parent"
                         android:layout_weight="7"
                         android:background="@color/vk_white"
-                        android:paddingTop="10dp"
                         android:paddingLeft="30dp"
+                        android:paddingTop="10dp"
                         android:text="Изменить статус"
                         android:textColor="@color/vk_light_color"
                         app:srcCompat="@drawable/vk_share_send_button_background" />
@@ -95,19 +108,19 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:id="@+id/friendsLinear"
+                    android:id="@+id/friendsLinearStranger"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
+                    android:layout_below="@+id/statusLinearStranger"
                     android:layout_weight="1"
-                    android:orientation="horizontal"
-                    android:layout_below="@+id/statusLinear">
+                    android:orientation="horizontal">
 
                     <ImageView
-                        android:background="@color/vk_white"
                         android:id="@+id/imageView4"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
+                        android:background="@color/vk_white"
                         android:paddingLeft="15dp"
                         app:srcCompat="@drawable/ic_profile_friends" />
 
@@ -119,18 +132,18 @@
                         android:layout_centerHorizontal="true"
                         android:layout_weight="7"
                         android:background="@color/vk_white"
-                        android:paddingTop="10dp"
                         android:paddingLeft="30dp"
+                        android:paddingTop="10dp"
                         android:text="друзей"
                         android:textColor="@color/vk_light_color" />
 
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_below="@+id/friendsLinear"
-                    android:id="@+id/followersLinear"
+                    android:id="@+id/followersLinearStranger"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
+                    android:layout_below="@+id/friendsLinearStranger"
                     android:layout_weight="1"
                     android:orientation="horizontal">
 
@@ -139,8 +152,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
-                        android:paddingLeft="15dp"
                         android:background="@color/vk_white"
+                        android:paddingLeft="15dp"
                         app:srcCompat="@drawable/ic_profile_followers" />
 
                     <TextView
@@ -158,19 +171,19 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:id="@+id/cityLinear"
-                    android:layout_below="@+id/followersLinear"
+                    android:id="@+id/cityLinearStranger"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_below="@+id/followersLinearStranger"
                     android:orientation="horizontal">
 
                     <ImageView
-                        android:background="@color/vk_white"
-                        android:paddingLeft="15dp"
                         android:id="@+id/imageView5"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
+                        android:background="@color/vk_white"
+                        android:paddingLeft="15dp"
                         app:srcCompat="@drawable/ic_profile_home" />
 
                     <TextView
@@ -189,19 +202,19 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:id="@+id/studiesLinear"
-                    android:layout_below="@+id/cityLinear"
+                    android:id="@+id/studiesLinearStranger"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
+                    android:layout_below="@+id/cityLinearStranger"
                     android:orientation="horizontal">
 
                     <ImageView
-                        android:background="@color/vk_white"
                         android:id="@+id/imageView7"
-                        android:paddingLeft="15dp"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
+                        android:background="@color/vk_white"
+                        android:paddingLeft="15dp"
                         app:srcCompat="@drawable/ic_profile_study" />
 
                     <TextView

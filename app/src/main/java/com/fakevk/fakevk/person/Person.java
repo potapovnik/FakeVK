@@ -1,4 +1,4 @@
-package com.fakevk.fakevk;
+package com.fakevk.fakevk.person;
 
 public class Person {
     int id;

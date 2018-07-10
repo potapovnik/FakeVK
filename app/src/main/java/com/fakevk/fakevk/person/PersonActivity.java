@@ -1,55 +1,63 @@
-package com.fakevk.fakevk;
+package com.fakevk.fakevk.person;
 
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.media.Image;
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.fakevk.fakevk.R;
+import com.fakevk.fakevk.VKRequestHelper;
 import com.squareup.picasso.Picasso;
-import com.vk.sdk.api.VKApi;
-import com.vk.sdk.api.VKApiConst;
-import com.vk.sdk.api.VKError;
-import com.vk.sdk.api.VKParameters;
-import com.vk.sdk.api.VKRequest;
-import com.vk.sdk.api.VKResponse;
 
-import org.json.JSONArray;
-import org.json.JSONObject;
-
-import java.io.BufferedInputStream;
-import java.io.BufferedOutputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.InputStream;
-import java.lang.reflect.Field;
-import java.net.URL;
-
-public class PersonActivity extends AppCompatActivity {
-
-
+public class PersonActivity extends AppCompatActivity{
+       public int currentId;
+       public Context context;
+       public int myId;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.person);
-        VKRequestHelper.setPersonalPage(this);
+        context=this;
+
+        SharedPreferences settings = getSharedPreferences("UserInfo", 0);
+        currentId=settings.getInt("currentId", 0);
+        setLaout();
+        //MyApplication app=(MyApplication) getApplicationContext();
+        VKRequestHelper.setPersonalPage(this,currentId);
 
 
     }
-public void setPersonalPage(Person person) {
+    protected void onResume(){
+        super.onResume();
+        if(currentId==myId)
+        VKRequestHelper.setClick((View)findViewById(R.id.friendsLinear),currentId,context);
+        else ;
+
+
+    }
+    public void setLaout(){
+
+        SharedPreferences settings = getSharedPreferences("UserInfo", 0);
+        myId=settings.getInt("myId", 0);
+        if(currentId==myId)
+            setContentView(R.layout.person);
+        else
+            setContentView(R.layout.stranger_person);
+    }
+    public void setPersonalPage(Person person) {
         loadedImage(person.photo_max);
         setFIO (person.first_name+"  "+person.last_name);
         setCity(person.city.title);
         setFriends(person.counters.friends);
         setOnline(person.online);
         setStatus(person.status);
-        setStudies(person.universities.name);
+//        setStudies(person.universities.name);
         setFollowers(person.counters.followers);
 
-}
+    }
     public void loadedImage (String photo){
         Picasso.with(this)
                 .load(photo)
@@ -67,15 +75,15 @@ public void setPersonalPage(Person person) {
 
     }
     public void setStatus (String status){
-        Button Status = findViewById(R.id.status);
+        TextView Status = findViewById(R.id.status);
         Status.setText(status);
     }
     public void setFriends (int friends){
-        Button Friends = findViewById(R.id.friends);
+        TextView Friends = findViewById(R.id.friends);
         Friends.setText(friends + "  друзей");
     }
     public void setFollowers (int subscriber){
-        Button Subscriber = findViewById(R.id.subscriber);
+        TextView Subscriber = findViewById(R.id.subscriber);
         Subscriber.setText(subscriber + "  подписчика");
     }
     public void setCity (String city){
@@ -86,6 +94,7 @@ public void setPersonalPage(Person person) {
         TextView Studies = findViewById(R.id.studies);
         Studies.setText("Место учёбы:  "+name);
     }
+
 
 
 }
