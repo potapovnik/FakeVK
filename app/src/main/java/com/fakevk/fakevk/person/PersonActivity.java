@@ -21,10 +21,10 @@ public class PersonActivity extends AppCompatActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         context=this;
-
         SharedPreferences settings = getSharedPreferences("UserInfo", 0);
         currentId=settings.getInt("currentId", 0);
-        setLaout();
+        myId=settings.getInt("myId", 0);
+       setLayout();
         //MyApplication app=(MyApplication) getApplicationContext();
         VKRequestHelper.setPersonalPage(this,currentId);
 
@@ -32,20 +32,16 @@ public class PersonActivity extends AppCompatActivity{
     }
     protected void onResume(){
         super.onResume();
-        if(currentId==myId)
+        VKRequestHelper.setClick((View)findViewById(R.id.followersLinear),currentId,context);
         VKRequestHelper.setClick((View)findViewById(R.id.friendsLinear),currentId,context);
-        else ;
 
 
     }
-    public void setLaout(){
-
-        SharedPreferences settings = getSharedPreferences("UserInfo", 0);
-        myId=settings.getInt("myId", 0);
-        if(currentId==myId)
+    void setLayout(){
+        if (currentId==myId)
             setContentView(R.layout.person);
         else
-            setContentView(R.layout.stranger_person);
+            setContentView(R.layout.person_stranger);
     }
     public void setPersonalPage(Person person) {
         loadedImage(person.photo_max);
@@ -76,7 +72,8 @@ public class PersonActivity extends AppCompatActivity{
     }
     public void setStatus (String status){
         TextView Status = findViewById(R.id.status);
-        Status.setText(status);
+        if(status!=null)
+            Status.setText(status);
     }
     public void setFriends (int friends){
         TextView Friends = findViewById(R.id.friends);

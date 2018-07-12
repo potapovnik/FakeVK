@@ -1,26 +1,23 @@
-package com.fakevk.fakevk.friends;
+package com.fakevk.fakevk.friends_followers.friends;
 
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ListView;
 
-import com.fakevk.fakevk.R;
+import com.fakevk.fakevk.friends_followers.ListFriendsFollowers;
 import com.fakevk.fakevk.person.PersonActivity;
 
 public class ClickOnItemFriendsOnScroll  implements AdapterView.OnItemClickListener {
 
-    public ClickOnItemFriendsOnScroll(int id, Context context,ArrayFriendsOnScroll arrayFriends) {
-        this.id = id;
+    public ClickOnItemFriendsOnScroll( Context context,ListFriendsFollowers arrayFriends) {
         this.context = context;
         this.arrayFriends=arrayFriends;
     }
 
     Context context;
-    int id;
-    ArrayFriendsOnScroll arrayFriends;
+    ListFriendsFollowers arrayFriends;
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {

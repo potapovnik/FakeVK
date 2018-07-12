@@ -1,4 +1,4 @@
-package com.fakevk.fakevk.friends;
+package com.fakevk.fakevk.friends_followers;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -9,18 +9,19 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.fakevk.fakevk.R;
+import com.fakevk.fakevk.friends_followers.FriendsFollowers;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
-public class AdapterForFriends  extends BaseAdapter  {
+ public  class AdapterFriendsFollowers extends BaseAdapter  {
     Context ctx;
     LayoutInflater lInflater;
-    List<FriendsOnScroll> objects;
+    List<FriendsFollowers> objects;
 
-    AdapterForFriends(Context context, List<FriendsOnScroll> FriendsOnScrolls) {
+  public AdapterFriendsFollowers(Context context, List<FriendsFollowers> friendsFollowers) {
         ctx = context;
-        objects = FriendsOnScrolls;
+        objects = friendsFollowers;
         lInflater = (LayoutInflater) ctx
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
@@ -51,7 +52,7 @@ public class AdapterForFriends  extends BaseAdapter  {
             view = lInflater.inflate(R.layout.friends_on_scroll, parent, false);
         }
 
-        FriendsOnScroll p = FriendsOnScroll(position);
+        FriendsFollowers p = FriendsOnScroll(position);
         ((TextView) view.findViewById(R.id.FIO)).setText(p.first_name+" "+p.last_name);
         Picasso.with(ctx)
                 .load(p.photo_50)
@@ -61,8 +62,8 @@ public class AdapterForFriends  extends BaseAdapter  {
         
     }
 
-    FriendsOnScroll FriendsOnScroll(int position) {
-        return ((FriendsOnScroll) getItem(position));
+  public FriendsFollowers FriendsOnScroll(int position) {
+        return ((FriendsFollowers) getItem(position));
     }
 }
 

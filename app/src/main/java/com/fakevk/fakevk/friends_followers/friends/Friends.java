@@ -1,8 +1,4 @@
-package com.fakevk.fakevk.friends;
-
-import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
+package com.fakevk.fakevk.friends_followers.friends;
 
 public class Friends{
     public Counters getCounters() {

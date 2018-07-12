@@ -27,7 +27,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".friends.FriendsActivity">
+        <activity android:name=".friends_followers.friends.FriendsActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.Friends" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".friends_followers.followers.FollowersActivity">
             <intent-filter>
                 <action android:name="android.intent.action.Friends" />
 

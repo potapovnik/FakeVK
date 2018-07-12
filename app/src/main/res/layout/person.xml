@@ -29,46 +29,60 @@
                 <ImageView
                     android:id="@+id/avatar"
                     android:layout_width="match_parent"
-                    android:layout_height="269dp"
+                    android:layout_height="306dp"
                     android:scaleType="fitXY" />
 
                 <TextView
-                    android:paddingLeft="10dp"
                     android:id="@+id/FIO"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentTop="true"
                     android:layout_marginTop="191dp"
+                    android:paddingLeft="10dp"
                     android:text="FIO"
                     android:textColor="@color/vk_white"
-                    android:textSize="15dp"
+                    android:textSize="20dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
-                    android:paddingLeft="10dp"
                     android:id="@+id/online"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/FIO"
+                    android:paddingLeft="10dp"
+                    android:textSize="10dp"
                     android:text=""
                     android:textColor="@color/vk_grey_color" />
 
-                <Button
-                    android:id="@+id/edit"
-
-                    android:layout_width="390dp"
+                <LinearLayout
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:id="@+id/editMessage"
+                    android:layout_width="match_parent"
                     android:layout_height="40dp"
                     android:layout_below="@+id/avatar"
-                    android:layout_centerHorizontal="true"
-                    android:text="Редактировать" />
+                    android:orientation="horizontal">
+
+
+
+                    <Button
+                        android:id="@+id/edit"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_margin="3dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/shape_person_edit"
+                        android:textColor="@color/vk_share_top_blue_color"
+                        android:text="Редактировать" />
+                </LinearLayout>
 
                 <LinearLayout
                     android:id="@+id/statusLinear"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
-                    android:layout_below="@+id/edit"
+                    android:layout_below="@+id/editMessage"
                     android:orientation="horizontal">
 
                     <ImageView
@@ -76,8 +90,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
-                        android:paddingLeft="15dp"
                         android:background="@color/vk_white"
+                        android:paddingLeft="15dp"
                         app:srcCompat="@drawable/ic_profile_status" />
 
                     <TextView
@@ -86,10 +100,10 @@
                         android:layout_height="match_parent"
                         android:layout_weight="7"
                         android:background="@color/vk_white"
-                        android:paddingTop="10dp"
                         android:paddingLeft="30dp"
+                        android:paddingTop="10dp"
                         android:text="Изменить статус"
-                        android:textColor="@color/vk_light_color"
+                        android:textColor="@color/vk_color"
                         app:srcCompat="@drawable/vk_share_send_button_background" />
 
                 </LinearLayout>
@@ -98,16 +112,16 @@
                     android:id="@+id/friendsLinear"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
+                    android:layout_below="@+id/statusLinear"
                     android:layout_weight="1"
-                    android:orientation="horizontal"
-                    android:layout_below="@+id/statusLinear">
+                    android:orientation="horizontal">
 
                     <ImageView
-                        android:background="@color/vk_white"
                         android:id="@+id/imageView4"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
+                        android:background="@color/vk_white"
                         android:paddingLeft="15dp"
                         app:srcCompat="@drawable/ic_profile_friends" />
 
@@ -119,18 +133,18 @@
                         android:layout_centerHorizontal="true"
                         android:layout_weight="7"
                         android:background="@color/vk_white"
-                        android:paddingTop="10dp"
                         android:paddingLeft="30dp"
+                        android:paddingTop="10dp"
                         android:text="друзей"
-                        android:textColor="@color/vk_light_color" />
+                        android:textColor="@color/vk_color" />
 
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_below="@+id/friendsLinear"
                     android:id="@+id/followersLinear"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
+                    android:layout_below="@+id/friendsLinear"
                     android:layout_weight="1"
                     android:orientation="horizontal">
 
@@ -139,8 +153,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
-                        android:paddingLeft="15dp"
                         android:background="@color/vk_white"
+                        android:paddingLeft="15dp"
                         app:srcCompat="@drawable/ic_profile_followers" />
 
                     <TextView
@@ -154,23 +168,23 @@
                         android:paddingLeft="30dp"
                         android:paddingTop="10dp"
                         android:text="подписчика"
-                        android:textColor="@color/vk_light_color" />
+                        android:textColor="@color/vk_color" />
                 </LinearLayout>
 
                 <LinearLayout
                     android:id="@+id/cityLinear"
-                    android:layout_below="@+id/followersLinear"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_below="@+id/followersLinear"
                     android:orientation="horizontal">
 
                     <ImageView
-                        android:background="@color/vk_white"
-                        android:paddingLeft="15dp"
                         android:id="@+id/imageView5"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
+                        android:background="@color/vk_white"
+                        android:paddingLeft="15dp"
                         app:srcCompat="@drawable/ic_profile_home" />
 
                     <TextView
@@ -185,23 +199,23 @@
                         android:paddingLeft="30dp"
                         android:paddingTop="10dp"
                         android:text="Город"
-                        android:textColor="@color/vk_light_color" />
+                        android:textColor="@color/vk_color" />
                 </LinearLayout>
 
                 <LinearLayout
                     android:id="@+id/studiesLinear"
-                    android:layout_below="@+id/cityLinear"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
+                    android:layout_below="@+id/cityLinear"
                     android:orientation="horizontal">
 
                     <ImageView
-                        android:background="@color/vk_white"
                         android:id="@+id/imageView7"
-                        android:paddingLeft="15dp"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
+                        android:background="@color/vk_white"
+                        android:paddingLeft="15dp"
                         app:srcCompat="@drawable/ic_profile_study" />
 
                     <TextView
@@ -216,7 +230,7 @@
                         android:paddingLeft="30dp"
                         android:paddingTop="10dp"
                         android:text="Место работы/учёбы"
-                        android:textColor="@color/vk_light_color" />
+                        android:textColor="@color/vk_color" />
                 </LinearLayout>
 
 

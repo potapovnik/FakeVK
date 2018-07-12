@@ -2,18 +2,13 @@ package com.fakevk.fakevk;
 
 import android.content.Context;
 import android.content.Intent;
-import android.text.Layout;
 import android.util.Log;
 import android.view.View;
-import android.widget.LinearLayout;
-import android.widget.ListView;
 
-import com.fakevk.fakevk.friends.AdapterForFriends;
-import com.fakevk.fakevk.friends.ArrayFriendsOnScroll;
-import com.fakevk.fakevk.friends.ClickOnItemFriendsOnScroll;
-import com.fakevk.fakevk.friends.Friends;
-import com.fakevk.fakevk.friends.FriendsActivity;
-import com.fakevk.fakevk.friends.FriendsOnScroll;
+import com.fakevk.fakevk.friends_followers.followers.FollowersActivity;
+import com.fakevk.fakevk.friends_followers.ListFriendsFollowers;
+import com.fakevk.fakevk.friends_followers.friends.Friends;
+import com.fakevk.fakevk.friends_followers.friends.FriendsActivity;
 import com.fakevk.fakevk.person.ArrayPerson;
 import com.fakevk.fakevk.person.PersonActivity;
 import com.google.gson.Gson;
@@ -88,7 +83,7 @@ public class VKRequestHelper {
             public void onComplete(VKResponse response) {
                 Log.d("aaaaaaaaaaaaa", ""+response.json);
                 JSONObject myResponse=response.json.optJSONObject("response");;
-                ArrayFriendsOnScroll items=new Gson().fromJson(String.valueOf(myResponse), ArrayFriendsOnScroll.class);
+                ListFriendsFollowers items=new Gson().fromJson(String.valueOf(myResponse), ListFriendsFollowers.class);
                 friendsActivity.setFriendsOnScroll(items);
 
 
@@ -107,13 +102,49 @@ public class VKRequestHelper {
         });
 
     }
+    public static void  setFollowersOnScroolPage(final FollowersActivity followersActivity,String id) {
+        String idUser = id;
+        VKRequest user = VKApi.users().getFollowers(VKParameters.from(VKApiConst.USER_ID, idUser, VKApiConst.FIELDS, "first_name, last_name, photo_50"));
+        user.executeWithListener(new VKRequest.VKRequestListener() {
+            @Override
+            public void onComplete(VKResponse response) {
+                Log.d("bbbbbbbbbbb", "" + response.json);
+                JSONObject myResponse = response.json.optJSONObject("response");
+                ListFriendsFollowers items = new Gson().fromJson(String.valueOf(myResponse), ListFriendsFollowers.class);
+                if (items!=null)
+                followersActivity.setFollowersOnScroll(items);
+            }
 
-    public static void setClick(View v, int id, Context context){
-        ListenerForPerson myListener=new ListenerForPerson(id,context);
-        if (v==null){
-            Log.d("zzzzzzzzzzz", "паращаwithV");
-        }
+            @Override
+            public void onError(VKError error) {
+//Do error stuff
+            }
+
+            @Override
+            public void attemptFailed(VKRequest request, int attemptNumber, int totalAttempts) {
+//I don't really believe in progress
+            }
+        });
+    }
+    public static void setClick(View v, int id, final Context context){
+        View.OnClickListener myListener=new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                switch (v.getId()){
+                    case R.id.statusLinear:;break;
+                    case R.id.friendsLinear:{
+                        Intent friendsActivity= new Intent(context, FriendsActivity.class);
+                        context.startActivity(friendsActivity);
+                    };break;
+                    case R.id.followersLinear:
+                        Intent followersActivity= new Intent(context, FollowersActivity.class);
+                        context.startActivity(followersActivity);;break;
+
+                }
+
+            }
+        };
         v.setOnClickListener(myListener);
     }
-
+    public static void setClickOnItem(){}
 }
